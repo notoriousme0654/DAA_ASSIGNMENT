@@ -1,0 +1,451 @@
+1. Compute the sum of digits of a number using recursion?
+CODE:
+def sum_of_digits(n):
+    if n < 10:
+        return n
+    else:
+        return (n % 10) + sum_of_digits(n // 10)
+number = 12345
+print(f"Sum of digits of {number} is {sum_of_digits(number)}")
+
+
+2. Compute the product of digits of a number using recursion?
+CODE:
+def product_of_digits(n):
+    if n < 10:
+        return n
+    else:
+        return (n % 10) * product_of_digits(n // 10)
+number = 12345
+print(f"Product of digits of {number} is {product_of_digits(number)}")
+
+
+3. Given two numbers x and y find the product using recursion?
+CODE:
+def product(x, y):
+    if y == 0:
+        return 0
+    else:
+        return x + product(x, y - 1)
+x = 5
+y = 4
+print(f"The product of {x} and {y} is {product(x, y)}")
+
+
+4. Find the value of 'a' raised to the power 'b' using recursion?
+CODE:
+def power(a, b):
+    if b == 0:
+        return 1
+    else:
+        return a * power(a, b - 1)
+a = 2
+b = 5
+print(f"{a} raised to the power {b} is {power(a, b)}")
+
+
+5. Convert decimal to binary using recursion?
+CODE:
+def decimal_to_binary(n):
+    if n == 0:
+        return '0'
+    else:
+        return decimal_to_binary(n // 2) + str(n % 2)
+decimal_number = 23
+binary_representation = decimal_to_binary(decimal_number)
+print(f"The binary representation of {decimal_number} is {binary_representation}")
+
+
+6.For any positive value of N, print 1 to N without using for or while loops via recursion (Reverse Countdown)?
+CODE:
+def print_numbers(n):
+    if n == 1:
+        print(1)
+    else:
+        print_numbers(n - 1)
+        print(n)
+N = 5
+print(f"Printing numbers from 1 to {N}:")
+print_numbers(N)
+
+
+7.For any positive value of N, print N to 1 without using for or while loops via recursion (Countdown)?
+CODE:
+def print_numbers_reverse(n):
+    if n == 1:
+        print(1)
+    else:
+        print(n)
+        print_numbers_reverse(n - 1)
+N = 5
+print(f"Printing numbers from {N} to 1:")
+print_numbers_reverse(N)
+
+
+8.Reverse a number using recursion?
+CODE:
+def reverse_number(n):
+    if n < 10:
+        return n
+    else:
+        last_digit = n % 10
+        remaining_digits = n // 10
+        reversed_remaining = reverse_number(remaining_digits)
+        return int(str(last_digit) + str(reversed_remaining))
+number = 12345
+print(f"The reverse of {number} is {reverse_number(number)}")
+
+
+9.Find length of string recursion?
+CODE:
+def length_of_string(s):
+    if s == "":
+        return 0
+    else:
+        return 1 + length_of_string(s[1:])
+string = "hello"
+print(f"The length of '{string}' is {length_of_string(string)}")
+
+
+10.Reverse a string uing recursion?
+CODE:
+def reverse_string(s):
+    if len(s) <= 1:
+        return s
+    else:
+        return reverse_string(s[1:]) + s[0]
+string = "hello"
+print(f"The reverse of '{string}' is '{reverse_string(string)}'")
+
+
+11.Check is a String is Palindrome using recursion?
+CODE:
+def is_palindrome(s):
+    if len(s) <= 1:
+        return True
+    else:
+        if s[0] == s[-1]:
+            return is_palindrome(s[1:-1])
+        else:
+            return False
+string1 = "radar"
+string2 = "hello"
+print(f"Is '{string1}' a palindrome? {is_palindrome(string1)}")
+print(f"Is '{string2}' a palindrome? {is_palindrome(string2)}")
+
+
+12.Compute sum of first N natural numbers using recursion?
+CODE:
+def sum_of_first_n(n):
+    if n == 0:
+        return 0
+    else:
+        return n + sum_of_first_n(n - 1)
+N = 5
+print(f"The sum of the first {N} natural numbers is {sum_of_first_n(N)}")
+
+
+13.Implement pow(x, n), which calculates x raised to the power n (i.e., xn).
+CODE:
+class Solution:
+    def myPow(self, x: float, n: int) -> float:
+        def calc_power(x, n):
+            if x == 0:
+                return 0
+            if n == 0:
+                return 1
+            res = calc_power(x, n // 2)
+            res = res * res
+            if n % 2 == 1:
+                return res * x
+            return res
+        ans = calc_power(x, abs(n))
+        if n >= 0:
+            return ans
+        return 1 / ans 
+
+
+14.Given an integer n, return true if it is a power of two. Otherwise, return false.
+An integer n is a power of two, if there exists an integer x such that n == 2x.
+CODE:
+class Solution(object):
+    def isPowerOfTwo(self, n):
+        if n >= 1 and (n & (n - 1)) == 0:
+            return True
+        return False
+
+
+15.Given an integer n, return true if it is a power of three. Otherwise, return false.
+An integer n is a power of three, if there exists an integer x such that n == 3x.
+CODE:
+class Recursion:
+    def pow(n):
+        if n == 1:
+            return True
+        elif n % 3 == 0 and n != 0:
+            n = n // 3
+            return Recursion.pow(n)
+        return False
+
+class Solution:
+    def isPowerOfThree(self, n):
+        a = Recursion()
+        return a.pow(n)
+
+
+16.Given an integer n, return true if it is a power of four. Otherwise, return false.
+An integer n is a power of four, if there exists an integer x such that n == 4x.
+CODE:
+class Solution:
+    def isPowerOfFour(self, n: int) -> bool:
+        if n <= 0:
+            return False
+            
+        return math.log(n, 4).is_integer()
+
+
+17.The Fibonacci numbers, commonly denoted F(n) form a sequence, called the Fibonacci sequence,
+such that each number is the sum of the two preceding ones, starting from 0 and 1. That is,
+F(0) = 0, F(1) = 1
+F(n) = F(n - 1) + F(n - 2), for n > 1.
+Given n, calculate F(n).
+CODE:
+class Solution:
+    fib_nums = [
+        0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181,
+        6765, 10946, 17711, 28657, 46368, 75025, 121393, 196418, 317811, 514229, 832040,
+        1346269, 2178309, 3524578, 5702887, 9227465, 14930352, 24157817, 39088169, 63245986,
+        102334155, 165580141, 267914296, 433494437, 701408733, 1134903170, 1836311903
+    ]
+    def fib(self, n):
+        return self.fib_nums[n]
+
+
+18.Geek created a random series and given a name geek-onacci series. Given four integers A, B, C, N. A, B, C
+represents the first three numbers of geek-onacci series. Find the Nth number of the series. The nth number of 
+geek-onacci series is a sum of the last three numbers (summation of N-1th, N-2th, and N-3th geek-onacci numbers)
+CODE:def GeekOnacci(args):
+    A,B,C,N = list(map(int, args))
+    N_th = A
+    N_th2 = B
+    N_th3 = C
+    if N>3:
+        for case in range(N-3):
+            if case%3 == 0:
+                N_th = N_th + N_th2 + N_th3
+    
+            elif case%3 == 1:
+                N_th2 = N_th + N_th2 + N_th3
+    
+            else:
+                N_th3 = N_th + N_th2 + N_th3
+    if N%3 == 1:
+        print(N_th)
+    if N%3 == 2:
+        print(N_th2)
+    if N%3 == 0:
+        print(N_th3)
+n = int(stdin.readline())
+for test_case in range(n):
+    GeekOnacci(stdin.readline().strip().split(' '))
+
+
+19.Sankalp recently learned Fibonacci numbers and now he is studying different algorithms to find them. 
+After getting bored of reading them, he came with his own new type of numbers. He defined them as follows:
+ f(0) = a;
+ f(1) = b;
+ f(n) = f(n-1) ^ f(n-2);  when n>1, where ^ denotes the bitwise xor operation.
+CODE:
+def fibonacci(a, b, n):
+    if(n == 0):
+        return(a)
+    elif(n == 1):
+        return(b)
+    elif(n == 2):
+        return(a ^ b)
+    return(fibonacci(a, b, n % 3))
+
+T = int(input())
+for i in range(T):
+    a, b, n = [int(x) for x in input().split()]
+    print(fibonacci(a, b, n))
+
+
+20.Count Number of Zeros in a Number using recursion?
+CODE:
+def count_zeros(n):    
+    if n == 0:
+        return 0
+    else:
+        last_digit = n % 10
+        if last_digit == 0:
+            return 1 + count_zeros(n // 10)
+        else:
+            return count_zeros(n // 10)
+number = 1020304050
+print(f"Number of zeros in {number} is {count_zeros(number)}")
+
+
+21.Given an integer num, return the number of steps to reduce it to zero.
+In one step, if the current number is even, you have to divide it by 2, otherwise, you have to subtract 1 from it.
+CODE:
+class Solution:
+    """
+    Time:   O(log(n))
+    Memory: O(log(n))
+    """
+    def numberOfSteps(self, num: int) -> int:
+        if num == 0:
+            return 0
+        return 1 + self.numberOfSteps(num - 1 if num & 1 else num >> 1)
+
+
+22.Find sum of Array elements using recursion?
+CODE:
+def sum_array(arr):
+    if not arr:
+        return 0
+    else:
+        return arr[0] + sum_array(arr[1:])
+array = [1, 2, 3, 4, 5]
+print(f"The sum of the array {array} is {sum_array(array)}")
+
+
+23.Find mean of Array elements using recursion?
+CODE:
+def mean_array(arr):
+    if not arr:
+        return None  # Alternatively, raise an exception for an empty array case
+    else:
+        total_sum = sum_array(arr)  # Use the sum_array function from the previous explanation
+        return total_sum / len(arr)
+def sum_array(arr):
+    if not arr:
+        return 0
+    else:
+        return arr[0] + sum_array(arr[1:])
+array = [1, 2, 3, 4, 5]
+print(f"The mean of the array {array} is {mean_array(array)}")
+
+
+24.Find maximum and minimum of Array elements using recursion?
+CODE:
+def find_max(arr):
+    if len(arr) == 1:
+        return arr[0]
+    else:
+        mid = len(arr) // 2
+        left_max = find_max(arr[:mid])   # Recursively find max in left half
+        right_max = find_max(arr[mid:])  # Recursively find max in right half
+        return max(left_max, right_max)  # Compare and return the maximum
+
+def find_min(arr):
+    if len(arr) == 1:
+        return arr[0]
+    else:
+        mid = len(arr) // 2
+        left_min = find_min(arr[:mid])   # Recursively find min in left half
+        right_min = find_min(arr[mid:])  # Recursively find min in right half
+        return min(left_min, right_min)  # Compare and return the minimum
+
+array = [3, 7, 2, 8, 1, 9, 4, 5, 6]
+print(f"Array: {array}")
+print(f"Maximum element: {find_max(array)}")
+print(f"Minimum element: {find_min(array)}")
+
+
+25.Compute the factorial of a number using recursion
+CODE:
+def factorial(n):
+    if n == 0 or n == 1:
+        return 1
+    else:
+        return n * factorial(n - 1)
+number = 5
+print(f"The factorial of {number} is {factorial(number)}")
+
+
+26.Given an array of integers, print a sum triangle from it such that the first level 
+has all array elements. From then, at each level number of elements is one less than the previous
+level and elements at the level is be the Sum of consecutive two elements in the previous level. 
+CODE:
+def printTriangle(A):
+        if (len(A) < 1):
+            return
+        temp = [0] * (len(A) - 1)
+        for i in range( 0, len(A) - 1):
+            x = A[i] + A[i + 1]
+            temp[i] = x
+        printTriangle(temp)
+        print(A)
+A = [ 1, 2, 3, 4, 5 ]
+printTriangle(A)
+
+
+27.Perform Bubble Sort using Recursion?
+CODE:
+def recursive_bubble_sort(arr, n):
+    if n == 1:
+        return
+    for i in range(n - 1):
+        if arr[i] > arr[i + 1]:
+            arr[i], arr[i + 1] = arr[i + 1], arr[i]
+    recursive_bubble_sort(arr, n - 1)
+array = [64, 34, 25, 12, 22, 11, 90]
+print("Original Array:", array)
+recursive_bubble_sort(array, len(array))
+print("Sorted Array:", array)
+
+
+28.Perform Insertion Sort using Recursion?
+CODE:
+def recursive_insertion_sort(arr, n):
+    if n <= 1:
+        return
+    recursive_insertion_sort(arr, n - 1)
+    last_element = arr[n - 1]
+    j = n - 2
+    while j >= 0 and arr[j] > last_element:
+        arr[j + 1] = arr[j]
+        j -= 1
+    arr[j + 1] = last_element
+
+
+29.Reverse a Linked List using recursion?
+CODE:
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+
+30.Merge two sorted Linked Lists using recursion?
+CODE:
+def print_linked_list(head):
+    current = head
+    while current:
+        print(current.val, end=" -> ")
+        current = current.next
+    print("None")
+l1 = ListNode(1, ListNode(3, ListNode(5)))
+l2 = ListNode(2, ListNode(4, ListNode(6)))
+print("List 1:")
+print_linked_list(l1)
+print("List 2:")
+print_linked_list(l2)
+merged_head = merge_two_lists(l1, l2)
+print("Merged Linked List:")
+print_linked_list(merged_head)
+
+
+31.Print all leaf nodes of a Binary Search Tree using recursion?
+CODE:
+root = TreeNode(4)
+root.left = TreeNode(2)
+root.right = TreeNode(6)
+root.left.left = TreeNode(1)
+root.left.right = TreeNode(3)
+root.right.left = TreeNode(5)
+root.right.right = TreeNode(7)
+print("Leaf nodes of the BST:")
+print_leaf_nodes(root)
